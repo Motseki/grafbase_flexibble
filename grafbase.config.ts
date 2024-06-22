@@ -2,27 +2,20 @@ import { graph, config } from '@grafbase/sdk'
 
 const g = graph.Standalone()
 
-// @ts-ignore
-const User = g.model('User', {
-  name: g.string().length({ min: 2, max: 100 }),
-  email: g.string().unique(),
+const user = g.type('User', {
+  name: g.string(),
+  age: g.int().optional(),
+  email: g.string(),
   avatarUrl: g.url(),
-  description: g.string().length({ min: 2, max: 1000 }).optional(),
   githubUrl: g.url().optional(),
-  linkedinUrl: g.url().optional(), 
-  // projects: g.relation(() => Project).list().optional(),
+  linkedinUrl: g.url().optional()
 })
 
-// @ts-ignore
-const Project = g.model('Project', {
-  title: g.string().length({ min: 3 }),
-  description: g.string(), 
-  image: g.url(),
-  liveSiteUrl: g.url(), 
-  githubUrl: g.url(),
-  // category: g.string().search(),
-  // createdBy: g.relation(() => User),
+const address = g.type('Address', {
+  street: g.string().optional()
 })
+
+g.union('UserOrAddress', { user, address })
 
 export default config({
   graph: g
