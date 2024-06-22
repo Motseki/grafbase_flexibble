@@ -2,13 +2,18 @@ import { graph, config } from '@grafbase/sdk'
 
 const g = graph.Standalone()
 
-// types are generated with the `type` method,
-// followed by the name and fields.
-const profile = g.type('Profile', {
-  address: g.string()
+// @ts-ignore
+const User = g.model('User', {
+  name: g.string().length({ min: 2, max: 100 }),
+  email: g.string().unique(),
+  avatarUrl: g.url(),
+  description: g.string().length({ min: 2, max: 1000 }).optional(),
+  githubUrl: g.url().optional(),
+  linkedinUrl: g.url().optional(), 
 })
 
-// finally we export the default config
 export default config({
-  graph: g
+  graph: g,
 })
+
+
