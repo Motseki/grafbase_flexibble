@@ -18,7 +18,9 @@
     "next-auth": "^4.24.7",
     "q": "^1.5.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0"
   },
   "devDependencies": {
     "@grafbase/sdk": "^0.25.0",

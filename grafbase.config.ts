@@ -21,7 +21,10 @@
 //   schema: g
 // })
 
-import { g, config, auth } from '@grafbase/sdk';
+import { config, connector, graph } from '@grafbase/sdk'
+
+const g = graph.Standalone()
+
 
 // @ts-ignore
 const User = g.model('User', {
@@ -34,5 +37,5 @@ const User = g.model('User', {
 })
 
 export default config({
-     schema: g
+     graph: g
  })
