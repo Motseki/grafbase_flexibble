@@ -1,6 +1,6 @@
-import { graph, config } from '@grafbase/sdk'
+import { g, config } from '@grafbase/sdk'
 
-const g = graph.Standalone()
+// const g = schema.Standalone()
 
 const user = g.type('User', {
   name: g.string(),
@@ -18,5 +18,5 @@ const address = g.type('Address', {
 g.union('UserOrAddress', { user, address })
 
 export default config({
-  graph: g
+  schema: g
 })
